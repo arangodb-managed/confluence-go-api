@@ -18,6 +18,8 @@ type Results struct {
 	Excerpt string  `json:"excerpt,omitempty"`
 	Title   string  `json:"title,omitempty"`
 	URL     string  `json:"url,omitempty"`
+	ID      string  `json:"id"`
+	Type    string  `json:"type,omitempty"`
 }
 
 // Content specifies content properties
@@ -94,6 +96,7 @@ type Search struct {
 	Start   int       `json:"start,omitempty"`
 	Limit   int       `json:"limit,omitempty"`
 	Size    int       `json:"size,omitempty"`
+	ID      string    `json:"id,omitempty"`
 }
 
 // SearchQuery defines query parameters used for searchng

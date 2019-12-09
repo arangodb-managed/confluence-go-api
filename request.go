@@ -127,7 +127,6 @@ func (a *API) SendSearchRequest(ep *url.URL, method string) (*Search, error) {
 	}
 
 	var search Search
-
 	err = json.Unmarshal(res, &search)
 	if err != nil {
 		return nil, err
