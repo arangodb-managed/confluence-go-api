@@ -1,4 +1,4 @@
-module github.com/cseeger-epages/confluence-go-api
+module github.com/Skarlso/confluence-go-api
 
 go 1.12
 
