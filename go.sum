@@ -1,3 +1,5 @@
+github.com/arangodb-managed/confluence-go-api v0.0.0-20191024162152-773f3cc63383 h1:RzwDKbC7mu8JZE2x2BikjiFn6Sm7+XAjXlpL41o0Z6Q=
+github.com/arangodb-managed/confluence-go-api v0.0.0-20191024162152-773f3cc63383/go.mod h1:ooRja0//r0luyQu/jkIDbxIzj8EozS90yiu3JUnXxo0=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/magefile/mage v1.8.0 h1:mzL+xIopvPURVBwHG9A50JcjBO+xV3b5iZ7khFRI+5E=
