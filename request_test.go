@@ -246,7 +246,7 @@ func TestSendDownloadRequest(t *testing.T) {
 	assert.Nil(t, err)
 
 	download := "/download/attachments/498794508/image.png"
-	ep, _ := url.ParseRequestURI(server.URL + "/wiki" + download)
+	ep, err := url.ParseRequestURI(server.URL + "/wiki" + download)
 	assert.Nil(t, err)
 	b, err := api.SendDownloadRequest(ep, "GET")
 	assert.Nil(t, err)
