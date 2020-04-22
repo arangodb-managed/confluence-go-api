@@ -9,17 +9,19 @@ import (
 type API struct {
 	endPoint        *url.URL
 	client          *http.Client
+	confluenceBase  *url.URL
 	username, token string
 }
 
 // Results array
 type Results struct {
-	Content Content `json:"content"`
-	Excerpt string  `json:"excerpt,omitempty"`
-	Title   string  `json:"title,omitempty"`
-	URL     string  `json:"url,omitempty"`
-	ID      string  `json:"id"`
-	Type    string  `json:"type,omitempty"`
+	Content Content                `json:"content"`
+	Links   map[string]interface{} `json:"_links,omitempty"`
+	Excerpt string                 `json:"excerpt,omitempty"`
+	Title   string                 `json:"title,omitempty"`
+	URL     string                 `json:"url,omitempty"`
+	ID      string                 `json:"id"`
+	Type    string                 `json:"type,omitempty"`
 }
 
 // Content specifies content properties

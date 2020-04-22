@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 // NewAPI implements API constructor
@@ -21,6 +22,14 @@ func NewAPI(location string, username string, token string) (*API, error) {
 
 	a := new(API)
 	a.endPoint = u
+
+	// Get the base url for confluence. It's whatever comes before `/rest`.
+	base := location[:strings.Index(location, "/rest")]
+	confBase, err := url.ParseRequestURI(base)
+	if err != nil {
+		return nil, err
+	}
+	a.confluenceBase = confBase
 	a.token = token
 	a.username = username
 	a.client = &http.Client{}
