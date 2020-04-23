@@ -90,6 +90,21 @@ func (a *API) SendContentRequest(ep *url.URL, method string, c *Content) (*Conte
 	return &content, nil
 }
 
+// SendDownloadRequest simply calls the given URL endpoint with a GET method
+// and returns the []byte content of the response containing the attachment's
+// data.
+func (a *API) SendDownloadRequest(ep *url.URL, method string) ([]byte, error) {
+	req, err := http.NewRequest(method, ep.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+	res, err := a.Request(req)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
 // SendUserRequest sends user related requests
 func (a *API) SendUserRequest(ep *url.URL, method string) (*User, error) {
 

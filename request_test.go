@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -237,10 +238,27 @@ func TestSendWatcherRequest(t *testing.T) {
 	}
 }
 
+func TestSendDownloadRequest(t *testing.T) {
+	server := confluenceRestAPIStub()
+	defer server.Close()
+
+	api, err := NewAPI(server.URL+"/wiki/rest/api", "userame", "token")
+	assert.Nil(t, err)
+
+	download := "/download/attachments/498794508/image.png"
+	ep, err := url.ParseRequestURI(server.URL + "/wiki" + download)
+	assert.Nil(t, err)
+	b, err := api.SendDownloadRequest(ep, "GET")
+	assert.Nil(t, err)
+	assert.Equal(t, []byte("\"content\""), b)
+}
+
 func confluenceRestAPIStub() *httptest.Server {
 	var resp interface{}
 	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.RequestURI {
+		case "/wiki/download/attachments/498794508/image.png":
+			resp = "content"
 		case "/wiki/rest/api/test":
 			resp = "test"
 		case "/wiki/rest/api/noauth":
